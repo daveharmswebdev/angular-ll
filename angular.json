@@ -21,7 +21,10 @@
               "apps/summerteeth/src/favicon.ico",
               "apps/summerteeth/src/assets"
             ],
-            "styles": ["apps/summerteeth/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/summerteeth/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -122,6 +125,29 @@
       },
       "tags": [],
       "implicitDependencies": ["summerteeth"]
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "lunch-and-learn",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui"],
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
+          }
+        }
+      },
+      "tags": []
     }
   }
 }
