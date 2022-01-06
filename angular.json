@@ -24,6 +24,32 @@
       },
       "tags": []
     },
+    "products": {
+      "projectType": "library",
+      "root": "libs/products",
+      "sourceRoot": "libs/products/src",
+      "prefix": "lunch-and-learn",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/products"],
+          "options": {
+            "jestConfig": "libs/products/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/products/src/**/*.ts",
+              "libs/products/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "summerteeth": {
       "projectType": "application",
       "root": "apps/summerteeth",
@@ -167,6 +193,32 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
+          }
+        }
+      },
+      "tags": []
+    },
+    "users": {
+      "projectType": "library",
+      "root": "libs/users",
+      "sourceRoot": "libs/users/src",
+      "prefix": "lunch-and-learn",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/users"],
+          "options": {
+            "jestConfig": "libs/users/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/users/src/**/*.ts",
+              "libs/users/src/**/*.html"
+            ]
           }
         }
       },

@@ -9,10 +9,19 @@ import { UiModule } from '@lunch-and-learn/ui';
 import { RightWayComponent } from './right-way/right-way.component';
 import { ObservableWayComponent } from './observable-way/observable-way.component';
 import { SubjectWayComponent } from './subject-way/subject-way.component';
+import { UsersStateModule } from '@lunch-and-learn/users';
+import { NgrxWayComponent } from './ngrx-way/ngrx-way.component';
 
 @NgModule({
-  declarations: [UserComponent, WrongWayComponent, RightWayComponent, ObservableWayComponent, SubjectWayComponent],
-  imports: [CommonModule, UserRoutingModule, UiModule],
+  declarations: [
+    UserComponent,
+    WrongWayComponent,
+    RightWayComponent,
+    ObservableWayComponent,
+    SubjectWayComponent,
+    NgrxWayComponent,
+  ],
+  imports: [CommonModule, UserRoutingModule, UiModule, UsersStateModule],
   providers: [UserService],
 })
 export class UserModule {}

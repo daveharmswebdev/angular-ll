@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@lunch-and-learn/models": ["libs/models/src/index.ts"],
-      "@lunch-and-learn/ui": ["libs/ui/src/index.ts"]
+      "@lunch-and-learn/products": ["libs/products/src/index.ts"],
+      "@lunch-and-learn/ui": ["libs/ui/src/index.ts"],
+      "@lunch-and-learn/users": ["libs/users/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
