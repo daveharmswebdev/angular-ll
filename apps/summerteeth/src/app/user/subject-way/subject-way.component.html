@@ -1,0 +1,18 @@
+<ng-container *ngIf="usersSubject$ | async as subject">
+  <h2>Grand List of Users: Observable Way!!!</h2>
+
+  <h4>Modified at: {{ subject.modifiedAt | date: 'short' }}</h4>
+
+  <mat-card *ngFor="let user of subject.users">
+    <mat-card-header>
+      <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li>Email: {{ user.email }}</li>
+        <li>Region: {{ user.region }}</li>
+        <li>Postal Code: {{ user.postalZip }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
