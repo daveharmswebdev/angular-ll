@@ -1,8 +1,46 @@
-<p>user works!</p>
+<mat-toolbar fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <button
+    mat-button
+    routerLink="/user/wrong-way"
+    routerLinkActive="active-router"
+  >
+    Wrong Way
+  </button>
+  <button
+    mat-button
+    routerLink="/user/right-way"
+    routerLinkActive="active-router"
+  >
+    Right Way
+  </button>
+  <button
+    mat-button
+    routerLink="/user/obs-way"
+    routerLinkActive="active-router"
+  >
+    Observable Way
+  </button>
+  <button
+    mat-button
+    routerLink="/user/subject-way"
+    routerLinkActive="active-router"
+  >
+    Subject Way
+  </button>
+  <button
+    mat-button
+    routerLink="/user/ngrx-way"
+    routerLinkActive="active-router"
+  >
+    NGRX Way
+  </button>
+  <button
+    mat-button
+    routerLink="/user/page-way"
+    routerLinkActive="active-router"
+  >
+    Page Way
+  </button>
+</mat-toolbar>
 
-<button mat-button routerLink="/user/wrong-way">Wrong Way</button>
-<button mat-button routerLink="/user/right-way">Right Way</button>
-<button mat-button routerLink="/user/obs-way">Observable Way</button>
-<button mat-button routerLink="/user/subject-way">Subject Way</button>
-<button mat-button routerLink="/user/ngrx-way">NGRX Way</button>
-<button mat-button routerLink="/user/page-way">Page Way</button>
+<router-outlet></router-outlet>

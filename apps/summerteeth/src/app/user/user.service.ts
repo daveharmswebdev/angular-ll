@@ -12,7 +12,9 @@ export interface ICachedUsers {
 export class UserService {
   private baseUrl = 'http://localhost:8080/api/v2/users';
 
-  users$ = this.http.get<IUser[]>(this.baseUrl);
+  users$ = this.http
+    .get<IPage<IUser>>(this.baseUrl)
+    .pipe(map((page) => page.content));
 
   private usersSubject = new BehaviorSubject<ICachedUsers | null>(null);
   userSubject$ = this.usersSubject.asObservable();

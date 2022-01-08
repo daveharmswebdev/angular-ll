@@ -9,13 +9,18 @@ import { UserComponent } from './user.component';
 import { WrongWayComponent } from './wrong-way/wrong-way.component';
 
 const routes: Routes = [
-  { path: '', component: UserComponent },
-  { path: 'wrong-way', component: WrongWayComponent },
-  { path: 'right-way', component: RightWayComponent },
-  { path: 'obs-way', component: ObservableWayComponent },
-  { path: 'subject-way', component: SubjectWayComponent },
-  { path: 'ngrx-way', component: NgrxWayComponent },
-  { path: 'page-way', component: PageWayComponent },
+  {
+    path: '',
+    component: UserComponent,
+    children: [
+      { path: 'wrong-way', component: WrongWayComponent },
+      { path: 'right-way', component: RightWayComponent },
+      { path: 'obs-way', component: ObservableWayComponent },
+      { path: 'subject-way', component: SubjectWayComponent },
+      { path: 'ngrx-way', component: NgrxWayComponent },
+      { path: 'page-way', component: PageWayComponent },
+    ],
+  },
 ];
 
 @NgModule({
