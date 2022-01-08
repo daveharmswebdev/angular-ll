@@ -13,6 +13,7 @@ import { UsersStateModule } from '@lunch-and-learn/users';
 import { NgrxWayComponent } from './ngrx-way/ngrx-way.component';
 import { PageWayComponent } from './page-way/page-way.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsersStateModule,
     ReactiveFormsModule,
     FormsModule,
+    FlexLayoutModule,
   ],
   providers: [UserService],
 })
