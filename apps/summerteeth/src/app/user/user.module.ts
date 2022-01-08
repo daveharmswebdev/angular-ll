@@ -11,6 +11,8 @@ import { ObservableWayComponent } from './observable-way/observable-way.componen
 import { SubjectWayComponent } from './subject-way/subject-way.component';
 import { UsersStateModule } from '@lunch-and-learn/users';
 import { NgrxWayComponent } from './ngrx-way/ngrx-way.component';
+import { PageWayComponent } from './page-way/page-way.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,16 @@ import { NgrxWayComponent } from './ngrx-way/ngrx-way.component';
     ObservableWayComponent,
     SubjectWayComponent,
     NgrxWayComponent,
+    PageWayComponent,
   ],
-  imports: [CommonModule, UserRoutingModule, UiModule, UsersStateModule],
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    UiModule,
+    UsersStateModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   providers: [UserService],
 })
 export class UserModule {}

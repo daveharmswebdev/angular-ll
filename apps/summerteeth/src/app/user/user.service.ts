@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUser } from '@lunch-and-learn/models';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { IPage, IUser } from '@lunch-and-learn/models';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 
 export interface ICachedUsers {
   modifiedAt: Date;
@@ -10,7 +10,7 @@ export interface ICachedUsers {
 
 @Injectable()
 export class UserService {
-  private baseUrl = 'http://localhost:8080/api/v1/users';
+  private baseUrl = 'http://localhost:8080/api/v2/users';
 
   users$ = this.http.get<IUser[]>(this.baseUrl);
 
@@ -20,7 +20,9 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(this.baseUrl);
+    return this.http
+      .get<IPage<IUser>>(this.baseUrl)
+      .pipe(map((page) => page.content));
   }
 
   fetchusers(): Observable<ICachedUsers | null> {
@@ -35,6 +37,21 @@ export class UserService {
       });
     }
     return this.userSubject$;
+  }
+
+  getPageUsers(
+    pageSize: number = 10,
+    page: number = 0,
+    lastName: string = ''
+  ): Observable<IPage<IUser>> {
+    const params = new HttpParams()
+      .set('pageSize', pageSize.toString())
+      .set('page', page.toString())
+      .set('lastName', lastName);
+
+    const url = `http://localhost:8080/api/v2/users?${params.toString()}`;
+
+    return this.http.get<IPage<IUser>>(url);
   }
 
   private fiveMinutesOld(modifiedAt: Date | undefined): boolean {

@@ -1,0 +1,31 @@
+<h2>Grand List of Users: Page Way!!!</h2>
+
+<fieldset [formGroup]="form">
+  <mat-form-field>
+    <input matInput placeholder="Last Name" formControlName="lastName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Page Size</mat-label>
+    <mat-select formControlName="pageSize">
+      <mat-option *ngFor="let size of pageSizeValues" [value]="size">{{
+        size
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Page" formControlName="page" />
+  </mat-form-field>
+</fieldset>
+
+<mat-card *ngFor="let user of users$ | async">
+  <mat-card-header>
+    <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ul>
+      <li>Email: {{ user.email }}</li>
+      <li>Region: {{ user.region }}</li>
+      <li>Postal Code: {{ user.postalZip }}</li>
+    </ul>
+  </mat-card-content>
+</mat-card>
