@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPage } from '@lunch-and-learn/models';
+import { IPage, IUser, IUserPageRequest } from '@lunch-and-learn/models';
 import { map, Observable } from 'rxjs';
 import { UsersEntity } from './users.models';
 
@@ -14,5 +14,16 @@ export class UsersNGRXService {
     return this.http
       .get<IPage<UsersEntity>>(this.baseUrl)
       .pipe(map((page) => page.content));
+  }
+
+  getPageUsers(request: IUserPageRequest): Observable<IPage<IUser>> {
+    const params = new HttpParams()
+      .set('pageSize', request.pageSize.toString())
+      .set('page', request.page.toString())
+      .set('lastName', request.lastName);
+
+    const url = `http://localhost:8080/api/v2/users?${params.toString()}`;
+
+    return this.http.get<IPage<IUser>>(url);
   }
 }

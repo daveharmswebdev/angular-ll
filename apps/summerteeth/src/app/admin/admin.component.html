@@ -1,1 +1,20 @@
-<p>admin works!</p>
+<h2>Admin</h2>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Assignee</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="lastNameControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of lastNames$ | async" [value]="option">
+        {{ option.lastName }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<user-list-view [users]="(users$ | async)!"></user-list-view>
