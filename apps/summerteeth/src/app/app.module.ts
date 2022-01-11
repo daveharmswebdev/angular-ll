@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DialogModule } from '@lunch-and-learn/dialog';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     FlexLayoutModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
