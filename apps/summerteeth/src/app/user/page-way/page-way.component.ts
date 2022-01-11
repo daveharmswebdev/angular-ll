@@ -22,6 +22,7 @@ export class PageWayComponent {
     pageSize: 15,
     page: 0,
   });
+  pageOptions = [0];
 
   users$ = this.form.valueChanges.pipe(
     startWith({
@@ -31,15 +32,13 @@ export class PageWayComponent {
     }),
     debounceTime(500),
     distinctUntilChanged(),
-    tap((value) => console.log(value)),
-    switchMap((value) => {
-      console.log(value);
-      return this.userService
-        .getPageUsers(value.pageSize, value.page, value.lastName)
-        .pipe(
-          tap(({ totalPages }) => console.log(totalPages)),
-          map((page) => page.content)
-        );
+    switchMap(({ pageSize, page, lastName }) => {
+      return this.userService.getPageUsers(pageSize, page, lastName).pipe(
+        tap(({ totalPages }) => {
+          this.pageOptions = [...Array(totalPages).keys()];
+        }),
+        map((page) => page.content)
+      );
     })
   );
 

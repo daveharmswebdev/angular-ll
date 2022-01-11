@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@lunch-and-learn/dialog": ["libs/dialog/src/index.ts"],
       "@lunch-and-learn/models": ["libs/models/src/index.ts"],
       "@lunch-and-learn/products": ["libs/products/src/index.ts"],
       "@lunch-and-learn/ui": ["libs/ui/src/index.ts"],

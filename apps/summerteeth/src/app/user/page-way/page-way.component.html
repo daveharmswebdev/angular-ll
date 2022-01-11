@@ -5,6 +5,7 @@
     [formGroup]="form"
     fxLayout="row"
     fxLayoutAlign="space-around center"
+    fxLayoutGap="16px"
   >
     <mat-form-field>
       <input matInput placeholder="Last Name" formControlName="lastName" />
@@ -18,7 +19,12 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Page" formControlName="page" />
+      <mat-label>Page</mat-label>
+      <mat-select formControlName="page">
+        <mat-option *ngFor="let option of pageOptions" [value]="option">{{
+          option
+        }}</mat-option>
+      </mat-select>
     </mat-form-field>
   </fieldset>
 

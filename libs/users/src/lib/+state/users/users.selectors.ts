@@ -39,3 +39,8 @@ export const getUsersBusy = createSelector(
   getUsersState,
   (state) => state.busy
 );
+
+export const getTotalPages = createSelector(
+  getUsersState,
+  (state) => state.totalPages
+);

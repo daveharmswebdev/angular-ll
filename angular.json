@@ -1,6 +1,32 @@
 {
   "version": 1,
   "projects": {
+    "dialog": {
+      "projectType": "library",
+      "root": "libs/dialog",
+      "sourceRoot": "libs/dialog/src",
+      "prefix": "lunch-and-learn",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/dialog"],
+          "options": {
+            "jestConfig": "libs/dialog/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/dialog/src/**/*.ts",
+              "libs/dialog/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "models": {
       "root": "libs/models",
       "sourceRoot": "libs/models/src",
