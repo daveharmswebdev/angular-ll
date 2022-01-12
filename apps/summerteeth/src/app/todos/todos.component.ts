@@ -1,40 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@lunch-and-learn/dialog';
-import { IDialogData } from '@lunch-and-learn/models';
-import { Observable, switchMap } from 'rxjs';
-import { TodosService } from './todos.service';
+import { IUserPageRequest } from '@lunch-and-learn/models';
+import * as fromUsersState from '@lunch-and-learn/users';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'lunch-and-learn-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
 })
-export class TodosComponent {
-  message = '';
+export class TodosComponent implements OnInit {
+  constructor(private store: Store<fromUsersState.State>) {}
 
-  message$: Observable<string> = this.todosService
-    .getDialogData()
-    .pipe(
-      switchMap((dialogData) =>
-        this.dialogService.displayDialog(dialogData).afterClosed()
-      )
-    );
-
-  constructor(
-    private dialogService: DialogService,
-    private todosService: TodosService
-  ) {}
-
-  // ngOnInit(): void {
-  // this.showDialog();
-  // }
-
-  showDialog() {
-    this.todosService.getDialogData().subscribe((data) => {
-      this.dialogService
-        .displayDialog(data)
-        .afterClosed()
-        .subscribe((message) => (this.message = message));
-    });
+  ngOnInit(): void {
+    const request: IUserPageRequest = {
+      page: 0,
+      pageSize: 10,
+      lastName: '',
+    };
+    this.store.dispatch(fromUsersState.loadUsersPage({ request }));
   }
 }

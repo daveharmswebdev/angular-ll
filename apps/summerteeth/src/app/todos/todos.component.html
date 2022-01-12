@@ -1,5 +1,17 @@
-<p>todos works!</p>
+<mat-toolbar>
+  <button
+    mat-button
+    routerLink="/todos/dialog"
+    routerLinkActive="active-router"
+  >
+    Dialog
+  </button>
+  <button mat-button routerLink="/todos/one" routerLinkActive="active-router">
+    One
+  </button>
+  <button mat-button routerLink="/todos/two" routerLinkActive="active-router">
+    Two
+  </button>
+</mat-toolbar>
 
-<h1>{{ message$ | async }}</h1>
-
-<button mat-button (click)="showDialog()">Show Dialog</button>
+<router-outlet></router-outlet>
